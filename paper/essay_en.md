@@ -1,9 +1,6 @@
 # Correct but Ungrounded: Reflections on Chatting with Lu Xun through RAG
 
-**Group:** Zhang Min and Liu Chenyang
-**Course:** DHG508, Assignment 2, Part 2
-**Date:** 23 November 2026
-**Word count:** approximately 1,900 words (including references)
+**Zhang Min and Liu Chenyang**
 
 ## 1. Figure and corpus
 
