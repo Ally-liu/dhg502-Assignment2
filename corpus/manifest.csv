@@ -1,0 +1,55 @@
+﻿set,file,title,author,role,voice_status,first_edition,chars_header,chars_file,han,source_url,fetched,used_in_index,notes
+LuXun_works,01_呐喊.txt,呐喊,鲁迅,fiction,authored,1923年8月,72081,72331,59589,https://luxunlib.com/books/1/,2026-11-13,yes,novel collection
+LuXun_works,02_彷徨.txt,彷徨,鲁迅,fiction,authored,1926年8月,74009,74196,60826,https://luxunlib.com/books/5/,2026-11-13,yes,novel collection
+LuXun_works,03_故事新编.txt,故事新编,鲁迅,fiction,authored,1936年1月,57431,57631,46571,https://luxunlib.com/books/7/,2026-11-13,yes,novel collection
+LuXun_works,04_野草.txt,野草,鲁迅,prose poetry,authored,1927年7月,21086,21265,16436,https://luxunlib.com/books/3/,2026-11-13,yes,prose-poetry collection
+LuXun_works,05_朝花夕拾.txt,朝花夕拾,鲁迅,memoir,authored,1928年9月,41843,42043,34790,https://luxunlib.com/books/6/,2026-11-13,yes,memoir collection
+LuXun_works,06_坟.txt,坟,鲁迅,essay collection,authored,1927年3月,114726,114939,95110,https://luxunlib.com/books/2/,2026-11-13,yes,zawen collection
+LuXun_works,07_热风.txt,热风,鲁迅,essay collection,authored,1925年11月,36274,36446,28815,https://luxunlib.com/books/4/,2026-11-13,yes,zawen collection
+LuXun_works,08_华盖集.txt,华盖集,鲁迅,essay collection,authored,1926年6月,60332,60487,49656,https://luxunlib.com/books/8/,2026-11-13,yes,zawen collection
+LuXun_works,09_华盖集续编.txt,华盖集续编,鲁迅,essay collection,authored,1927年5月,77364,77531,63866,https://luxunlib.com/books/9/,2026-11-13,yes,zawen collection
+LuXun_works,10_而已集.txt,而已集,鲁迅,essay collection,authored,1928年10月,62517,62687,51344,https://luxunlib.com/books/10/,2026-11-13,yes,zawen collection
+LuXun_works,11_三闲集.txt,三闲集,鲁迅,essay collection,authored,1932年9月,63806,63990,52654,https://luxunlib.com/books/11/,2026-11-13,yes,zawen collection
+LuXun_works,12_二心集.txt,二心集,鲁迅,essay collection,authored,1932年10月,87829,88081,71536,https://luxunlib.com/books/12/,2026-11-13,yes,zawen collection
+LuXun_works,13_伪自由书.txt,伪自由书,鲁迅,essay collection,authored,1933年10月,61966,62211,50303,https://luxunlib.com/books/14/,2026-11-13,yes,zawen collection
+LuXun_works,14_南腔北调集.txt,南腔北调集,鲁迅,essay collection,authored,1934年3月,78280,78446,64236,https://luxunlib.com/books/13/,2026-11-13,yes,zawen collection
+LuXun_works,15_准风月谈.txt,准风月谈,鲁迅,essay collection,authored,1934年12月,76537,76735,62312,https://luxunlib.com/books/15/,2026-11-13,yes,zawen collection
+LuXun_works,16_花边文学.txt,花边文学,鲁迅,essay collection,authored,1936年6月,51465,51637,41569,https://luxunlib.com/books/16/,2026-11-13,yes,zawen collection
+LuXun_works,17_且介亭杂文.txt,且介亭杂文,鲁迅,essay collection,authored,1937年7月,75498,75660,62666,https://luxunlib.com/books/17/,2026-11-13,yes,zawen collection
+LuXun_works,18_且介亭杂文二集.txt,且介亭杂文二集,鲁迅,essay collection,authored,1937年7月,93111,93275,75257,https://luxunlib.com/books/18/,2026-11-13,yes,zawen collection
+LuXun_works,19_且介亭杂文末编.txt,且介亭杂文末编,鲁迅,essay collection,authored,1937年7月,63414,63581,51469,https://luxunlib.com/books/19/,2026-11-13,yes,zawen collection
+LuXun_works,20_集外集.txt,集外集,鲁迅,essay collection,authored,1935年5月,69718,69970,54815,https://luxunlib.com/books/20/,2026-11-13,yes,zawen collection
+LuXun_works,21_集外集拾遗.txt,集外集拾遗,鲁迅,essay collection,authored,1938年（收入《鲁迅全集》）,80207,80461,63145,https://luxunlib.com/books/21/,2026-11-13,yes,zawen collection
+LuXun_works,22_集外集拾遗补编.txt,集外集拾遗补编,鲁迅,essay collection,authored,1952年,238546,238808,173952,https://luxunlib.com/books/20595/,2026-11-13,yes,miscellany; includes notes and appendices
+LuXun_works,23_中国小说史略.txt,中国小说史略,鲁迅,scholarship,authored,1923年12月（上册）；1924年6月（下册）,151562,151819,120980,https://luxunlib.com/books/22/,2026-11-13,yes,literary history
+LuXun_works,24_汉文学史纲要.txt,汉文学史纲要,鲁迅,scholarship,authored,1938年（正式出版）,27411,27657,21191,https://luxunlib.com/books/23/,2026-11-13,yes,literary history
+LuXun_works,25_古籍序跋集.txt,古籍序跋集,鲁迅,prefaces,authored,待补,40834,41020,30850,https://luxunlib.com/books/24/,2026-11-13,yes,prefaces and postscripts
+LuXun_works,26_译文序跋集.txt,译文序跋集,鲁迅,prefaces,authored,待补,103517,103778,81072,https://luxunlib.com/books/30/,2026-11-13,yes,prefaces and postscripts to translations
+LuXun_works,27_古小说钩沉.txt,古小说钩沉,鲁迅（辑录）,compilation,compiled,待补,197086,197326,157170,https://luxunlib.com/books/32/,2026-11-13,yes,compilation of earlier texts; not solely Lu Xun's voice
+LuXun_works,28_唐宋传奇集.txt,唐宋传奇集,鲁迅（编）,compilation,edited,1927年12月（上册）；1928年2月（下册）,141408,141664,111580,https://luxunlib.com/books/36/,2026-11-13,yes,edited anthology of Tang-Song tales; not solely Lu Xun's voice
+LuXun_works,29_小说旧闻钞.txt,小说旧闻钞,鲁迅（辑录）,compilation,compiled,1926 年,65651,65905,51770,https://luxunlib.com/books/57/,2026-11-13,yes,compilation of earlier sources; not solely Lu Xun's voice
+LuXun_works,30_嵇康集.txt,嵇康集,嵇康著，鲁迅校勘,compilation,edited,1947 年 10 月,63074,63326,48211,https://luxunlib.com/books/41/,2026-11-13,yes,"Ji Kang's works, edited and collated by Lu Xun; not Lu Xun's voice"
+LuXun_works,31_会稽郡故书杂集.txt,会稽郡故书杂集,鲁迅（辑录）,compilation,compiled,1915年（木刻本）,33624,33879,25780,https://luxunlib.com/books/31/,2026-11-13,yes,compilation of earlier local records; not solely Lu Xun's voice
+LuXun_works,32_两地书.txt,两地书,鲁迅、许广平,letters,co-authored,1933年4月,140779,140997,114505,https://luxunlib.com/books/25/,2026-11-13,yes,letters with Xu Guangping; first person alternates
+Writings_about_LuXun,01_亡友鲁迅印象记.txt,亡友鲁迅印象记,许寿裳,memoir/biography,memoir,1947年10月,51343,51599,42131,https://luxunlib.com/books/27/,2026-11-13,no,biographical source; excluded from the RAG index
+Writings_about_LuXun,02_我所认识的鲁迅.txt,我所认识的鲁迅,许寿裳,memoir/biography,memoir,1952年,62619,62875,50649,https://luxunlib.com/books/28/,2026-11-13,no,biographical source; excluded from the RAG index
+Writings_about_LuXun,03_鲁迅的思想与生活.txt,鲁迅的思想与生活,许寿裳,memoir/biography,memoir,1947年6月,37814,38071,30763,https://luxunlib.com/books/47/,2026-11-13,no,biographical source; excluded from the RAG index
+Writings_about_LuXun,04_欣慰的纪念.txt,欣慰的纪念,许广平,memoir/biography,memoir,1951年7月,79114,79282,67861,https://luxunlib.com/books/40/,2026-11-13,no,biographical source; excluded from the RAG index
+Writings_about_LuXun,05_鲁迅回忆录.txt,鲁迅回忆录,许广平,memoir/biography,memoir,1961年5月（单行本）,94079,94333,80759,https://luxunlib.com/books/37/,2026-11-13,no,biographical source; excluded from the RAG index
+Writings_about_LuXun,06_关于鲁迅的生活.txt,关于鲁迅的生活,许广平,memoir/biography,memoir,1954年6月,26460,26613,22446,https://luxunlib.com/books/42/,2026-11-13,no,biographical source; excluded from the RAG index
+Writings_about_LuXun,07_鲁迅的故家.txt,鲁迅的故家,周作人,memoir/biography,memoir,1953年3月，上海出版公司初版,122064,122324,102267,https://luxunlib.com/books/20331/,2026-11-13,no,biographical source; excluded from the RAG index
+Writings_about_LuXun,08_鲁迅小说里的人物.txt,鲁迅小说里的人物,周作人,memoir/biography,memoir,1954年，上海出版公司,118030,118245,97614,https://luxunlib.com/books/21379/,2026-11-13,no,biographical source; excluded from the RAG index
+Writings_about_LuXun,09_鲁迅的青年时代.txt,鲁迅的青年时代,周作人,memoir/biography,memoir,1957年，中国青年出版社,74287,74484,63256,https://luxunlib.com/books/21346/,2026-11-13,no,biographical source; excluded from the RAG index
+Writings_about_LuXun,10_民元前的鲁迅先生.txt,民元前的鲁迅先生,王冶秋,memoir/biography,memoir,1943年4月,69704,69961,57640,https://luxunlib.com/books/49/,2026-11-13,no,biographical source; excluded from the RAG index
+Writings_about_LuXun,11_鲁迅传.txt,鲁迅传,小田岳夫,memoir/biography,memoir,1946年9月初版,69779,70034,60762,https://luxunlib.com/books/20880/,2026-11-13,no,biographical source; excluded from the RAG index
+Writings_about_LuXun,12_鲁迅正传.txt,鲁迅正传,郑学稼,memoir/biography,memoir,1941年,63024,63188,52424,https://luxunlib.com/books/20792/,2026-11-13,no,biographical source; excluded from the RAG index
+Writings_about_LuXun,13_鲁迅的书.txt,鲁迅的书,欧阳凡海,memoir/biography,memoir,1942年5月,287238,287401,252511,https://luxunlib.com/books/20795/,2026-11-13,no,biographical source; excluded from the RAG index
+Writings_about_LuXun,14_鲁迅先生二三事.txt,鲁迅先生二三事,孙伏园,memoir/biography,memoir,1942年4月,26885,27074,23248,https://luxunlib.com/books/20794/,2026-11-13,no,biographical source; excluded from the RAG index
+Writings_about_LuXun,15_鲁迅回忆断片.txt,鲁迅回忆断片,荆有麟,memoir/biography,memoir,1943年11月,50067,50262,41773,https://luxunlib.com/books/20797/,2026-11-13,no,biographical source; excluded from the RAG index
+Writings_about_LuXun,16_回忆鲁迅先生.txt,回忆鲁迅先生,萧红,memoir/biography,memoir,1940年7月初版，生活书店发行,43620,43828,36300,https://luxunlib.com/books/21603/,2026-11-13,no,biographical source; excluded from the RAG index
+Writings_about_LuXun,17_鲁迅事迹考.txt,鲁迅事迹考,林辰,memoir/biography,memoir,1948年7月初版,65358,65566,53722,https://luxunlib.com/books/21116/,2026-11-13,no,biographical source; excluded from the RAG index
+Writings_about_LuXun,18_鲁迅散论.txt,鲁迅散论,雪苇,memoir/biography,memoir,1948年4月大连初版,31508,31763,25404,https://luxunlib.com/books/21100/,2026-11-13,no,biographical source; excluded from the RAG index
+Writings_about_LuXun,19_关于鲁迅.txt,关于鲁迅,梅子编,memoir/biography,memoir,1942年10月,35573,35828,29883,https://luxunlib.com/books/20796/,2026-11-13,no,biographical source; excluded from the RAG index
+Writings_about_LuXun,20_论鲁迅的思想.txt,论鲁迅的思想,平心,memoir/biography,memoir,1941年3月初版,113436,113625,98179,https://luxunlib.com/books/85/,2026-11-13,no,biographical source; excluded from the RAG index
+Writings_about_LuXun,21_民族魂鲁迅.txt,民族魂鲁迅,萧红,memoir/biography,memoir,1940年10月，发表于《大公报》,9954,10111,8289,https://luxunlib.com/books/22065/,2026-11-13,no,biographical source; excluded from the RAG index
+Writings_about_LuXun,22_回忆鲁迅房族和社会环境35年间（1902-1936）的演变.txt,回忆鲁迅房族和社会环境35年间（1902-1936）的演变,周冠五（观鱼）著,memoir/biography,memoir,人民文学出版社 1959年,160518,160784,135986,https://luxunlib.com/books/21637/,2026-11-13,no,biographical source; excluded from the RAG index

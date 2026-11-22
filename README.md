@@ -1,105 +1,122 @@
-# Lu Xun corpus (DHG508 Assignment 2, Part 1)
+# Lu Xun RAG: Chatting with a Historical Figure's Texts
 
-Digitised plain-text corpus of **Lu Xun (周树人, 1881-1936)**, prepared for a RAG
-(retrieval-augmented generation) chat application: 54 books, about 4.33 million
-characters (3.53 million Chinese characters), one .txt file per book.
+**DHG508 · Assignment 2 · Part 2 (group reflection essay)**
+**Group:** Zhang Min and Liu Chenyang
+**Date:** 23 November 2026
 
-## Structure
+This repository contains the complete Assignment 2 submission: the Part 1 corpus, the Part 2 English reflection essay, the exported conversations and error log, and the system files needed to reproduce the experiment. The experiment uses [HistFig](https://github.com/mcjkurz/histfig) with the texts of **Lu Xun (鲁迅, 1881–1936)**.
 
-    LuXun_works/            32 books written by Lu Xun himself
-    Writings_about_LuXun/   22 books about him by other authors
+The essay is the submitted text: **`paper/essay_en.docx`** (approximately 1,970 words, six pages). A Markdown source and a rendered PDF are included for convenience.
 
-**LuXun_works** - fiction (Na Han, Pang Huang, Gu Shi Xin Bian), prose poetry and essays
-(Ye Cao, Zhao Hua Xi Shi), the sixteen zawen collections (Fen, Re Feng, Hua Gai Ji, Er Yi Ji,
-San Xian Ji, Er Xin Ji, Wei Zi You Shu, Nan Qiang Bei Diao Ji, Zhun Feng Yue Tan, Hua Bian Wen Xue,
-Qie Jie Ting Za Wen I-III, Ji Wai Ji I-II), the letters Liang Di Shu, and the scholarly and
-editorial works (Zhongguo Xiao Shuo Shi Lue, Han Wen Xue Shi Gang Yao, Gu Xiao Shuo Gou Chen,
-Tang Song Chuan Qi Ji, Xiao Shuo Jiu Wen Chao, Ji Kang Ji, Hui Ji Jun Gu Shu Za Ji,
-Gu Ji Xu Ba Ji, Yi Wen Xu Ba Ji).
+---
 
-**Writings_about_LuXun** - memoirs and biographies by Xu Shoushang, Xu Guangping, Zhou Zuoren,
-Wang Yeqiu, Sun Fuyuan, Jing Youlin, Xiao Hong, Lin Chen, Ping Xin, Xue Wei and Zhou Guanwu,
-plus the biographies by Komada Takeo (trans. Fan Quan) and Zheng Xuejia.
+## Submission checklist
 
-## Format
+| Requirement | Where it is | Status |
+|---|---|---|
+| **Part 1:** `.txt` files, UTF-8, at least 1 million characters, with a source list | `corpus/` — 54 volumes, about 4.33 million characters; `corpus/manifest.csv`; `corpus/README.md` | Complete |
+| **Part 2:** one group essay, **English, 1,500–2,000 words** | `paper/essay_en.docx` — approximately 1,970 words (Word count) | Complete |
+| **1 · Figure and corpus:** what is in the files, what is missing, how clean the text is | Essay §1; `corpus/README.md`; `corpus/manifest.csv` | Complete |
+| **2 · Method:** which questions were asked, which settings were changed | Essay §2; `system/README.md`; `system/config.example.toml` | Complete |
+| **3 · Evidence:** at least five exchanges, each quoted with the passages behind it and a verdict; one success and one clear failure | Essay §3, Table 2; `evidence/` — eight exchanges, including the iron-house success and the Zhu An clear failure | Complete |
+| **4 · Analysis:** where errors arose (sources, retrieval, generation); what RAG can do for historical research; engage Underwood et al. or Poibeau | Essay §4 | Complete |
+| **AI-USE.md** | `AI-USE.md` | Complete |
 
-Plain text, UTF-8 without BOM, LF line endings, one book per file. Each file opens with a header
-giving the book title, author, first edition, source URL and character count; chapters inside a
-file are separated by a rule line, so any chunk can be cited back to a specific book and chapter.
-
-## Source and processing
-
-All texts were taken from the public full-text collection of the Lu Xun Library
-(https://luxunlib.com), which reproduces proofread printed editions; the first-edition details in
-each header come from that catalogue. Processing was limited to HTML-to-text conversion and removal
-of site navigation - no wording was altered.
-
-Lu Xun died in 1936, so his works are in the public domain (life + 50 years in mainland China and
-Taiwan); the memoirs by Xu Shoushang, Xu Guangping and the other authors are likewise out of
-copyright.
+---
 
 ## Contents
 
-### LuXun_works (32 books, 2,629,782 characters)
+```text
+README.md                  This overview and submission checklist
+AI-USE.md                  AI-use disclosure
+paper/
+  essay_en.md              Essay source (Markdown)
+  essay_en.docx            Submitted essay (A4, Times New Roman 12, 1.5 spacing)
+  essay_en.pdf             Rendered copy
+  README.md                Essay notes (word count, quotation policy)
+corpus/
+  README.md                Part 1 corpus description and full 54-volume tables
+  manifest.csv             One row per volume: title, author, role, voice status, counts, source, used_in_index
+  LuXun_works/             32 volumes used for the RAG index
+  Writings_about_LuXun/    22 memoirs and biographies, submitted for Part 1 but excluded from the index
+evidence/
+  README.md                How to read the evidence; verdict rubric; 1-based part numbers
+  conversation_evidence.md E1–E5: iron house, youth reading, Fujino, Zhu An, AI and literature
+  conversation_simple.md   S1: unemployment and pensions, simple retrieval
+  conversation_agent.md    A1: the same question, agent retrieval
+  conversation_mayfourth.md E6: May Fourth
+  error_log.csv            Eight exchanges with verdict and error layer
+system/
+  README.md                Persona and settings notes
+  persona.md               Figure description and persona prompt used in the experiment
+  config.example.toml      Key-free configuration example
+code/
+  build_manifest.py        Regenerates corpus/manifest.csv
+  build_error_log.py       Regenerates evidence/error_log.csv
+  make_docx.py             Regenerates paper/essay_en.docx from the Markdown source
+```
 
-| File | Title | Author | First edition | Characters |
-|---|---|---|---|---|
-| 01_呐喊.txt | 呐喊 | 鲁迅 | 1923年8月 | 72,081 |
-| 02_彷徨.txt | 彷徨 | 鲁迅 | 1926年8月 | 74,009 |
-| 03_故事新编.txt | 故事新编 | 鲁迅 | 1936年1月 | 57,431 |
-| 04_野草.txt | 野草 | 鲁迅 | 1927年7月 | 21,086 |
-| 05_朝花夕拾.txt | 朝花夕拾 | 鲁迅 | 1928年9月 | 41,843 |
-| 06_坟.txt | 坟 | 鲁迅 | 1927年3月 | 114,726 |
-| 07_热风.txt | 热风 | 鲁迅 | 1925年11月 | 36,274 |
-| 08_华盖集.txt | 华盖集 | 鲁迅 | 1926年6月 | 60,332 |
-| 09_华盖集续编.txt | 华盖集续编 | 鲁迅 | 1927年5月 | 77,364 |
-| 10_而已集.txt | 而已集 | 鲁迅 | 1928年10月 | 62,517 |
-| 11_三闲集.txt | 三闲集 | 鲁迅 | 1932年9月 | 63,806 |
-| 12_二心集.txt | 二心集 | 鲁迅 | 1932年10月 | 87,829 |
-| 13_伪自由书.txt | 伪自由书 | 鲁迅 | 1933年10月 | 61,966 |
-| 14_南腔北调集.txt | 南腔北调集 | 鲁迅 | 1934年3月 | 78,280 |
-| 15_准风月谈.txt | 准风月谈 | 鲁迅 | 1934年12月 | 76,537 |
-| 16_花边文学.txt | 花边文学 | 鲁迅 | 1936年6月 | 51,465 |
-| 17_且介亭杂文.txt | 且介亭杂文 | 鲁迅 | 1937年7月 | 75,498 |
-| 18_且介亭杂文二集.txt | 且介亭杂文二集 | 鲁迅 | 1937年7月 | 93,111 |
-| 19_且介亭杂文末编.txt | 且介亭杂文末编 | 鲁迅 | 1937年7月 | 63,414 |
-| 20_集外集.txt | 集外集 | 鲁迅 | 1935年5月 | 69,718 |
-| 21_集外集拾遗.txt | 集外集拾遗 | 鲁迅 | 1938年（收入《鲁迅全集》） | 80,207 |
-| 22_集外集拾遗补编.txt | 集外集拾遗补编 | 鲁迅 | 1952年 | 238,546 |
-| 23_中国小说史略.txt | 中国小说史略 | 鲁迅 | 1923年12月（上册）；1924年6月（下册） | 151,562 |
-| 24_汉文学史纲要.txt | 汉文学史纲要 | 鲁迅 | 1938年（正式出版） | 27,411 |
-| 25_古籍序跋集.txt | 古籍序跋集 | 鲁迅 | 待补 | 40,834 |
-| 26_译文序跋集.txt | 译文序跋集 | 鲁迅 | 待补 | 103,517 |
-| 27_古小说钩沉.txt | 古小说钩沉 | 鲁迅（辑录） | 待补 | 197,086 |
-| 28_唐宋传奇集.txt | 唐宋传奇集 | 鲁迅（编） | 1927年12月（上册）；1928年2月（下册） | 141,408 |
-| 29_小说旧闻钞.txt | 小说旧闻钞 | 鲁迅（辑录） | 1926 年 | 65,651 |
-| 30_嵇康集.txt | 嵇康集 | 嵇康著，鲁迅校勘 | 1947 年 10 月 | 63,074 |
-| 31_会稽郡故书杂集.txt | 会稽郡故书杂集 | 鲁迅（辑录） | 1915年（木刻本） | 33,624 |
-| 32_两地书.txt | 两地书 | 鲁迅、许广平 | 1933年4月 | 140,779 |
+---
 
-### Writings_about_LuXun (22 books, 1,697,251 characters)
+## The corpus in one paragraph
 
-| File | Title | Author | First edition | Characters |
-|---|---|---|---|---|
-| 01_亡友鲁迅印象记.txt | 亡友鲁迅印象记 | 许寿裳 | 1947年10月 | 51,343 |
-| 02_我所认识的鲁迅.txt | 我所认识的鲁迅 | 许寿裳 | 1952年 | 62,619 |
-| 03_鲁迅的思想与生活.txt | 鲁迅的思想与生活 | 许寿裳 | 1947年6月 | 37,814 |
-| 04_欣慰的纪念.txt | 欣慰的纪念 | 许广平 | 1951年7月 | 79,114 |
-| 05_鲁迅回忆录.txt | 鲁迅回忆录 | 许广平 | 1961年5月（单行本） | 94,079 |
-| 06_关于鲁迅的生活.txt | 关于鲁迅的生活 | 许广平 | 1954年6月 | 26,460 |
-| 07_鲁迅的故家.txt | 鲁迅的故家 | 周作人 | 1953年3月，上海出版公司初版 | 122,064 |
-| 08_鲁迅小说里的人物.txt | 鲁迅小说里的人物 | 周作人 | 1954年，上海出版公司 | 118,030 |
-| 09_鲁迅的青年时代.txt | 鲁迅的青年时代 | 周作人 | 1957年，中国青年出版社 | 74,287 |
-| 10_民元前的鲁迅先生.txt | 民元前的鲁迅先生 | 王冶秋 | 1943年4月 | 69,704 |
-| 11_鲁迅传.txt | 鲁迅传 | 小田岳夫 | 1946年9月初版 | 69,779 |
-| 12_鲁迅正传.txt | 鲁迅正传 | 郑学稼 | 1941年 | 63,024 |
-| 13_鲁迅的书.txt | 鲁迅的书 | 欧阳凡海 | 1942年5月 | 287,238 |
-| 14_鲁迅先生二三事.txt | 鲁迅先生二三事 | 孙伏园 | 1942年4月 | 26,885 |
-| 15_鲁迅回忆断片.txt | 鲁迅回忆断片 | 荆有麟 | 1943年11月 | 50,067 |
-| 16_回忆鲁迅先生.txt | 回忆鲁迅先生 | 萧红 | 1940年7月初版，生活书店发行 | 43,620 |
-| 17_鲁迅事迹考.txt | 鲁迅事迹考 | 林辰 | 1948年7月初版 | 65,358 |
-| 18_鲁迅散论.txt | 鲁迅散论 | 雪苇 | 1948年4月大连初版 | 31,508 |
-| 19_关于鲁迅.txt | 关于鲁迅 | 梅子编 | 1942年10月 | 35,573 |
-| 20_论鲁迅的思想.txt | 论鲁迅的思想 | 平心 | 1941年3月初版 | 113,436 |
-| 21_民族魂鲁迅.txt | 民族魂鲁迅 | 萧红 | 1940年10月，发表于《大公报》 | 9,954 |
-| 22_回忆鲁迅房族和社会环境35年间（1902-1936）的演变.txt | 回忆鲁迅房族和社会环境35年间（1902-1936）的演变 | 周冠五（观鱼）著 | 人民文学出版社 1959年 | 160,518 |
+The Part 1 submission contains **54 volumes, about 4.33 million characters** (3.53 million Chinese characters): 32 volumes in `LuXun_works/` and 22 memoirs or biographies about Lu Xun in `Writings_about_LuXun/`. The RAG experiment indexed only the 32 volumes in `LuXun_works/` — **2,629,782 characters, 3,268 passages**. The 22 memoirs were excluded so that the model's first-person "I" would be Lu Xun's, not a biographer's.
+
+That exclusion is also the source of the experiment's clearest failure. The memoirs are exactly where **Zhu An (朱安)**, Lu Xun's arranged wife, appears. By excluding them, we removed the evidence that could answer a question about her. The corpus is also not a pure Lu Xun voice: five of the 32 volumes are compilations or editions of other authors' texts, and *Liangdi Shu* is a co-authored correspondence with Xu Guangping. Together those six volumes are **643,097 characters, about 24.4%** of the indexed text. `corpus/manifest.csv` records the role and voice status of every volume.
+
+---
+
+## The experiment in one paragraph
+
+We used HistFig's local FastAPI + SQLite application, a cloud chat model (`z-ai/glm-5.3-flash` via OpenRouter), and a locally rebuilt embedding index (`BAAI/bge-m3`, 1024 dimensions, Apple M5 via MPS). The only substantive change from the default setup was the embedding model: OpenRouter's embedding endpoint returned HTTP 404, so we rebuilt the index locally. **The application and index were local; generation was not** — questions and retrieved passages were sent to OpenRouter.
+
+Settings: 1,000-character chunks with 150 overlap; hybrid vector + BM25 retrieval with RRF k = 60; `top_k = 5`; `candidates = 30`; `min_similarity = 0.2`; 20 messages of history; up to 5 agent steps (4 used); temperature 0.7. Each exchange began in a fresh conversation and was exported with its retrieved passages.
+
+We asked five core questions (iron house, youth reading, Zhu An, Fujino, unemployment and pensions), added a sixth check on May Fourth, and ran the unemployment question in both simple and agent mode.
+
+---
+
+## What we found
+
+1. **RAG can produce a genuinely grounded answer.** The iron-house exchange reconstructs the argument and the exchange with Jin Xinyi; all five retrieved passages are relevant and the citations point to supporting text. The May Fourth check is a second, qualified success.
+2. **Correctness is not the same as grounding.** The youth-reading and Fujino answers are substantially correct, but the primary text was not retrieved in the first case and only one of five passages was direct evidence in the second. A correct answer can hide a retrieval failure.
+3. **The clearest failure is plausible, fluent, and unsourced.** The Zhu An answer gives a detailed biography with no `[n]` citations. The corpus contains no "Zhu An"; the top retrieved passage is a false lexical match on the character "朱" in a mock marriage advertisement. The failure is three-layered: source gap, retrieval noise, and parametric memory in generation.
+4. **Better retrieval can produce a worse historical answer.** In agent mode, the unemployment question retrieves 5/5 relevant passages, but the generator puts "内卷" and "躺平" in Lu Xun's mouth and treats "社保" as a familiar institution. The content is period-specific; the model's stylistic prior is not.
+5. **The corpus boundary is an interpretation.** Excluding the memoirs protected the first-person voice but made the Zhu An question unanswerable from the corpus. The five compilations and the co-authored letters mean the "Lu Xun" voice was already mixed. The essay turns this into the central methodological point rather than hiding it.
+
+---
+
+## Reproducing the experiment
+
+1. Install HistFig and the optional local embedding stack:
+
+   ```bash
+   uv sync --extra local
+   ```
+
+2. Copy `system/config.example.toml` to HistFig's `data/config.toml` and add your own OpenRouter key. No key is stored in this repository.
+
+3. Create a figure using `system/persona.md` and upload the 32 files in `corpus/LuXun_works/`. **Do not upload `corpus/Writings_about_LuXun/`** if you want to reproduce the first-person experiment; those 22 memoirs were deliberately excluded.
+
+4. Wait for indexing to finish (the reference run produced 3,268 passages), then ask the questions in `evidence/conversation_evidence.md`, `conversation_simple.md`, `conversation_agent.md`, and `conversation_mayfourth.md`.
+
+5. Export each conversation as Markdown and compare it with `evidence/error_log.csv`. Part numbers are 1-based, as exported by HistFig.
+
+The reference run used a specific proprietary chat model and a locally rebuilt embedding index. **The procedure is reproducible; exact outputs are not.** Model updates, sampling, and the embedding change will produce different wording.
+
+---
+
+## Known limitations
+
+- **Text quality:** the corpus is a UTF-8 web transcription, not a critical edition. Headers, chapter rules, editorial notes, and textual lacunae remain; some headers are truncated; we did not collate the texts against print editions.
+- **Mixed voices:** five volumes are compilations or editions of other authors' texts, and *Liangdi Shu* is co-authored. The persona's "I" can retrieve other people's words.
+- **Corpus boundary:** the 22 memoirs that discuss Zhu An were excluded. The Zhu An failure is overdetermined by that design choice.
+- **Small sample:** one figure, one model, five core questions plus additional checks. We judged our own answers; there is no second coder.
+- **Proprietary model:** the chat model may change or be deprecated. The embedding model was replaced after a guardrail error.
+- **Language:** the submitted essay is in English. Quotations from Chinese sources are our translations; the Chinese originals are in `evidence/`.
+
+---
+
+## AI use and rights
+
+See **`AI-USE.md`** for the tools used, the division of labour, and the verification procedure. The Lu Xun texts are in the public domain in mainland China (life + 50 years). The 22 memoirs are included for course use; their copyright status varies by author, and users should check before redistributing them. The essay, metadata, and documentation are the authors' work.

@@ -1,0 +1,43 @@
+# HistFig configuration example (API keys intentionally blank).
+# Copy to histfig/data/config.toml and fill in your own key.
+
+[server]
+host = "127.0.0.1"
+port = 8000
+
+[chat]
+provider = "openai_compatible"
+base_url = "https://openrouter.ai/api/v1"
+api_key = ""
+api_key_env = "OPENROUTER_API_KEY"
+model = "z-ai/glm-5.3-flash"
+temperature = 0.7
+timeout = 300.0
+history_messages = 20
+allowed_models = []
+
+[embedding]
+provider = "sentence_transformers"
+base_url = ""
+api_key = ""
+api_key_env = ""
+model = "BAAI/bge-m3"
+batch_size = 16
+query_prefix = ""
+document_prefix = ""
+timeout = 120.0
+
+[chunking]
+chunk_size = 1000
+overlap = 150
+
+[retrieval]
+top_k = 5
+candidates = 30
+min_similarity = 0.2
+rrf_k = 60
+agent_steps = 5
+
+[public]
+keep_days = 14
+messages_per_hour = 30
