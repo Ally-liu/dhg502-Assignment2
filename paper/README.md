@@ -1,6 +1,6 @@
 ﻿# Paper
 
-**Title:** Correct but Ungrounded: Reflections on Chatting with Lu Xun through RAG
+**Title:** What a Lu Xun Chatbot Can and Cannot Answer
 **Group:** Zhang Min and Liu Chenyang
 **Course:** DHG508, Assignment 2, Part 2
 **Date:** 23 November 2026

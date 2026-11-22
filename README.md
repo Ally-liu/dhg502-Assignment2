@@ -1,4 +1,4 @@
-﻿# Lu Xun RAG: Chatting with a Historical Figure's Texts
+﻿# What a Lu Xun Chatbot Can and Cannot Answer
 
 **DHG508 · Assignment 2 · Part 2 (group reflection essay)**
 **Group:** Zhang Min and Liu Chenyang

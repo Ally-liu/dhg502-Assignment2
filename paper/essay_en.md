@@ -1,4 +1,4 @@
-# Correct but Ungrounded: Reflections on Chatting with Lu Xun through RAG
+# What a Lu Xun Chatbot Can and Cannot Answer
 
 **Zhang Min and Liu Chenyang**
 
