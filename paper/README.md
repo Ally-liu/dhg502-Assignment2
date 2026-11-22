@@ -1,6 +1,6 @@
 ﻿# Paper
 
-**Title:** What a Lu Xun Chatbot Can and Cannot Answer
+**Title:** A Group Reflection on Talking to Lu Xun through RAG
 **Group:** Zhang Min and Liu Chenyang
 **Course:** DHG508, Assignment 2, Part 2
 **Date:** 23 November 2026

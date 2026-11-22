@@ -1,4 +1,4 @@
-﻿# What a Lu Xun Chatbot Can and Cannot Answer
+﻿# A Group Reflection on Talking to Lu Xun through RAG
 
 **DHG508 · Assignment 2 · Part 2 (group reflection essay)**
 **Group:** Zhang Min and Liu Chenyang
