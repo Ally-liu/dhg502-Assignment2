@@ -8,7 +8,7 @@ Digitised plain-text corpus of **Lu Xun (周树人, 1881–1936)**, prepared for
 |---|---:|---:|---|
 | `LuXun_works/` | 32 | 2,629,782 | **Yes** |
 | `Writings_about_LuXun/` | 22 | 1,697,251 | No |
-| **Total** | **54** | **4,327,033** | — |
+| **Total** | **54** | **4,327,033** | n/a |
 
 The 32 volumes in `LuXun_works/` were indexed with HistFig; the 22 memoirs and biographies in
 `Writings_about_LuXun/` were submitted for Part 1 but deliberately excluded from the first-person
@@ -20,7 +20,7 @@ experiment. **Do not upload the memoir set when reproducing the essay's experime
     Writings_about_LuXun/   22 memoirs and biographies, excluded from the index
     manifest.csv            One row per volume: role, voice status, counts, source, used_in_index
 
-**LuXun_works** — fiction (*Na Han*, *Pang Huang*, *Gu Shi Xin Bian*), prose poetry and memoir
+**LuXun_works**: fiction (*Na Han*, *Pang Huang*, *Gu Shi Xin Bian*), prose poetry and memoir
 (*Ye Cao*, *Zhao Hua Xi Shi*), seventeen zawen/essay collections (*Fen*, *Re Feng*, *Hua Gai Ji*,
 *Hua Gai Ji Xu Bian*, *Er Yi Ji*, *San Xian Ji*, *Er Xin Ji*, *Wei Zi You Shu*, *Nan Qiang Bei Diao
 Ji*, *Zhun Feng Yue Tan*, *Hua Bian Wen Xue*, *Qie Jie Ting Za Wen* I–III, *Ji Wai Ji* I–II), the
@@ -29,7 +29,7 @@ Shi Gang Yao*), two collections of prefaces and postscripts (*Gu Ji Xu Ba Ji*, *
 and five compilations or editions of earlier texts (*Gu Xiao Shuo Gou Chen*, *Tang Song Chuan Qi
 Ji*, *Xiao Shuo Jiu Wen Chao*, *Ji Kang Ji*, *Hui Ji Jun Gu Shu Za Ji*).
 
-**Writings_about_LuXun** — memoirs and biographies by Xu Shoushang, Xu Guangping, Zhou Zuoren,
+**Writings_about_LuXun**: memoirs and biographies by Xu Shoushang, Xu Guangping, Zhou Zuoren,
 Wang Yeqiu, Sun Fuyuan, Jing Youlin, Xiao Hong, Lin Chen, Ping Xin, Xue Wei and Zhou Guanwu,
 plus the biographies by Komada Takeo (trans. Fan Quan) and Zheng Xuejia. These are the sources that
 discuss Zhu An; they are why the memoir set matters, and why excluding it matters for the essay.

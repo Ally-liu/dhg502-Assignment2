@@ -28,7 +28,7 @@ The chat model and the embedding model are part of the experiment; OpenCode is t
 3. **Writing and formatting**
    - Rewrote/translated the authors' Chinese draft into the English essay, following the assignment's four sections and the 1,500–2,000-word limit.
    - Drafted the repository README, the corpus/evidence/system notes, and this disclosure.
-   - Generated the `.docx` from the Markdown source with a standard-library script (A4, Times New Roman 12 pt, 1.5 spacing, bordered tables).
+   - Generated the `.docx` from the Markdown source with a standard-library script (A4, Times New Roman 12 pt, 1.5 spacing, one bordered settings table).
 
 ## What the authors did
 
@@ -44,7 +44,7 @@ The English essay is a translation/rewrite of the authors' Chinese draft, not an
 ## Representative prompts
 
 - "Rewrite this Chinese draft as a 1,800–2,000-word English group reflection with the four required sections. Keep every empirical claim traceable to `evidence/`; do not invent quotations."
-- "Build a five-row evidence table. For each row, quote the exchange, quote the retrieved passage with its book and part number, and give a verdict. Include one success and one clear failure."
+- "Draft five exchanges in prose. For each, quote the question and a short answer, quote the retrieved passage with its book and part number, and give a verdict. Include one success and one clear failure."
 - "Check every `part N` in the paper against the HistFig exports and list the mismatches. The exports are 1-based."
 - "Separate the source, retrieval, and generation layers for each case. Where the evidence is ambiguous, say so."
 - "Generate a clean A4 DOCX from the Markdown: Times New Roman 12 pt, 1.5 spacing, bordered tables."

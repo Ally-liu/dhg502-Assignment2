@@ -3,104 +3,71 @@
 **Group:** Zhang Min and Liu Chenyang
 **Course:** DHG508, Assignment 2, Part 2
 **Date:** 23 November 2026
-**Word count:** approximately 1,970 words (including headings and references)
+**Word count:** approximately 1,980 words (including headings)
 
 ## 1. Figure and corpus
 
-Retrieval-augmented generation (RAG) promises to make a model *read* a historical figure rather than *remember* him. We tested that promise with Lu Xun (1881–1936), whose complete works are large, public-domain, and familiar enough to judge; his first-person voice also makes ventriloquism easy to detect.
+RAG lets a model work from a set of texts instead of training memory alone. We wanted to see whether that changes how a historical figure answers questions. We chose Lu Xun (1881-1936) because his collected works are large, public domain, and familiar to us.
 
-Our Part 1 corpus has 54 volumes (about 4.4 million characters); the index used the 32 in `LuXun_works` (about 2.63 million): three novels, two prose/memoir collections, seventeen essay collections, two scholarly works, two preface collections, five compilations or editions, and the co-authored *Liangdi Shu*. The 22 memoirs in `Writings_about_LuXun`—by Xu Shoushang, Xu Guangping, Zhou Zuoren, Xiao Hong, and others—were excluded so that the model's "I" would be Lu Xun's, not a biographer's.
+Part 1 gave us 54 volumes, about 4.4 million characters. The index used 32 of them, about 2.63 million by the library's count: three novels, two prose and memoir collections, seventeen essay collections, two literary histories, two preface collections, five compilations or editions, and the letters in Liangdi Shu. The other 22 are memoirs and biographies by Xu Shoushang, Xu Guangping, Zhou Zuoren, Xiao Hong and others. We left them out because we wanted the first person to be Lu Xun, not a biographer.
 
-The exclusion was principled but costly. The memoirs are exactly where Zhu An, Lu Xun's arranged wife, appears. By excluding them we removed the evidence needed to answer a question about her. The Zhu An failure is therefore overdetermined by our corpus design: we asked a question whose sources we had deliberately left out.
+Zhu An (1878-1947) was the woman Lu Xun married in 1906. The marriage was arranged by his mother, and the couple lived in separate rooms for most of their marriage. Lu Xun supported her financially and wrote very little about her in his published work. Most of what we know about her comes from the memoirs and biographies we had excluded. We asked about her because she is a case where the published archive is silent but the memoirs are not. The index had nothing to retrieve, so the corpus had no answer before the model spoke.
 
-The corpus is also less pure than "32 works by Lu Xun" suggests. Five volumes are compilations or editions of other authors' texts; *Liangdi Shu* is a correspondence with Xu Guangping, so its first person alternates. Together they are about a quarter of the indexed characters. The files are UTF-8 web transcriptions, not critical editions: headers, chapter rules, editorial notes, and lacunae remain; some headers are truncated; front matter is indexed; and we did not collate against print editions. It is a mixed archive, not a pure voice.
+The corpus is less clean than "32 works by Lu Xun" sounds. Five of the volumes are compilations or editions of other people's texts, and Liangdi Shu is a collection of letters between Lu Xun and Xu Guangping, so the first person moves between two writers. Those six volumes are about a quarter of the indexed text. The files are web transcriptions, not critical editions. They keep book headers, chapter rules, editorial notes and lacunae, and some headers are cut off. Front matter is indexed. We did not check the text against printed editions. It is readable and citable, but it is a mixed archive, not a single voice.
 
-The persona prompt deepened the problem. It told the model to answer in the first person, keep Lu Xun's tone, rely on "the materials you have read and your known life," and say "I don't know" when uncertain. "Known life" authorizes parametric memory; the Zhu An answer walked through that door.
+The persona prompt made it worse. It told the model to answer in the first person, keep Lu Xun's tone, use "the materials you have read and your known life," and say "I don't know" when uncertain. The phrase "known life" gives the model permission to use what it remembers about Lu Xun's biography. That is what happened with Zhu An.
 
 ## 2. Method
 
-We asked five core questions, each aimed at a different layer: the iron house (textual argument), youth reading (stated position and source type), Zhu An (biographical silence), Fujino (detail recall and retrieval precision), and unemployment and pensions (conceptual anachronism). We added a sixth check on May Fourth and ran the unemployment question in both simple and agent mode.
+We asked five core questions. The first was about the "iron house" in the preface to Nahan, testing whether the system could rebuild an argument. The second asked why Lu Xun opposed young people reading old Chinese books, testing a stated position and its source type. The third asked about Zhu An, where the corpus was silent. The fourth asked what Lu Xun remembered about Fujino, testing detail recall and retrieval precision. The fifth asked about unemployment and pensions, testing whether the model would import modern concepts into a 1936 voice. We also ran a May Fourth check and the unemployment question in simple and agent mode.
+
+Table 1 lists the settings. The only substantive change was the embedding model. OpenRouter's embedding endpoint returned HTTP 404, so we rebuilt the index locally with BAAI/bge-m3 (1024 dimensions) on an Apple M5 through MPS. The chat model stayed on OpenRouter, so questions and retrieved passages went to a cloud service even though the index was local.
 
 **Table 1. Settings.**
 
 | Setting | Value | Note |
 |---|---|---|
-| Application | HistFig, local FastAPI + SQLite | — |
+| Application | HistFig, local FastAPI and SQLite | |
 | Chat model | `z-ai/glm-5.3-flash` via OpenRouter | Generation in the cloud |
-| Embedding | `BAAI/bge-m3`, 1024 dimensions, local MPS | **Changed** |
+| Embedding | `BAAI/bge-m3`, 1024 dimensions, local MPS | Changed |
 | Chunking | 1,000 Chinese characters, 150 overlap | Kept |
-| Index | 3,268 passages | — |
-| Retrieval | hybrid vector + BM25, RRF k = 60 | Kept |
+| Index | 3,268 passages | |
+| Retrieval | hybrid vector and BM25, RRF k = 60 | Kept |
 | `top_k` | 5 | Kept |
 | `candidates` | 30 | Kept |
 | `min_similarity` | 0.2 | Kept |
 | History | 20 messages | Kept |
-| Agent steps | up to 5 (4 used) | Kept |
+| Agent steps | up to 5, 4 used | Kept |
 | Temperature | 0.7 | Kept |
 
-Only the embedding model changed. OpenRouter's embedding endpoint returned HTTP 404, so we rebuilt the index locally with `BAAI/bge-m3` (1024 dimensions) on an Apple M5 via MPS. The chat model stayed in the cloud: indexing kept the corpus local, but questions and retrieved passages went to OpenRouter. "Local deployment" therefore describes the application and the index, not the generation.
-
-Each exchange began in a fresh conversation. We exported the answer, its citations, and the retrieved passages, then assigned a verdict: **success** (correct and grounded in primary text), **partial** (substantially correct but one layer fails), **mixed** (grounded restraint plus a conceptual failure), or **clear failure** (unsupported specifics presented as fact, with no citations). All translations are ours; the Chinese originals are in `evidence/`.
+Each exchange started in a new conversation. We exported the answer, citations and retrieved passages, then wrote a verdict. We used four labels: success, partial, mixed and clear failure. The conversations and error log are in the repository, with the Chinese originals and part numbers.
 
 ## 3. Evidence
 
-**Table 2. Five exchanges and the passages behind them.**
+**The iron house.** We asked, "What did you mean by the iron house in the preface to Nahan?" The answer said the iron house was a figure for Chinese society, "a suffocating darkness," and it separated two claims: the house is almost impossible to destroy, and yet the few people who are awake leave room for hope. The retrieved passage was the original figure: "Imagine an iron house without windows, absolutely indestructible, with many people inside asleep, soon to suffocate." The answer also used the line "Despair is as much an illusion as hope" from the Nanqiang Beidiao Ji. All five passages were relevant, and the citations [1][2][5] matched the claims. The answer rebuilt the argument and the exchange with Jin Xinyi. This was a success.
 
-| Exchange (quoted) | Passages behind it (quoted) | Verdict |
-|---|---|---|
-| **Q:** "What did you mean by the 'iron house'?"<br>**A:** "A figure for the whole of Chinese society… two layers: the house is almost impossible to destroy, yet one cannot say there is no hope." | "Imagine an iron house without windows, absolutely indestructible…" (*Call to Arms*, part 4); "Despair is as much an illusion as hope" (*South-North Dialect Collection*, part 17). | **Success.** 5/5 relevant; citations [1][2][5] match. |
-| **Q:** "Why do you oppose young people reading old Chinese books?"<br>**A:** "Read little—or nothing—of Chinese books; read foreign books." | "Mr. Lu has the audacity to assert…" (*Collection of Uncollected Essays*, part 19, Shi Zhecun's rebuttal); the primary essay in *Huagai Ji* was **not retrieved**. | **Partial.** 0/5 primary text; the quote comes from an opponent. |
-| **Q:** "What was your relationship with Zhu An?"<br>**A:** "A gift my mother gave me… Love is something I do not know." | No passage contains "Zhu An" (grep = 0); the top hit is a fake "Mr. Zhu" marriage advertisement (*Supplement to Collected Uncollected Essays*, part 158); no citations. | **Clear failure.** 0/5 relevant; biography presented as memory, with no source. |
-| **Q:** "What did you most remember about Mr. Fujino?"<br>**A:** "His character was great in my eyes and in my heart…" | "His character was great…" (*Dawn Blossoms Plucked at Dusk*, part 40); other four: two prefaces (parts 1, 2) and unrelated *Qiejieting Zawen* 45 and *Liangdi Shu* 115. | **Partial.** Only 1/5 direct; the correct answer masks weak retrieval. |
-| **Q:** "Unemployment is high, and social insurance cannot cover old age."<br>**A (simple):** "I died in 1936; I do not know…"<br>**A (agent):** "Many say 'involution' and 'lying flat'…" | Simple: *Fen* 77–78; *South-North* 49; noise *Erxin Ji* 92. Agent: *Huagai Ji* 19; *South-North* 23; *Fen* 76, 77, 88. | **Mixed / failure.** Simple 4/5, hedges but accepts "social insurance"; agent 5/5 but more anachronistic. |
+**Youth reading.** We asked why Lu Xun opposed young people reading old Chinese books. The answer gave the famous line: "Read little, or indeed nothing, of Chinese books; read foreign books." The position is correct, but the search did not retrieve Lu Xun's original essay in Huagai Ji. All five passages were polemics, and three were opponents' rebuttals. One of them, Shi Zhecun's rebuttal, quotes Lu Xun as saying, "I think one should read little, or indeed nothing, of Chinese books." The source type was wrong, and the original context, general readers versus specialists in ancient literature, was missing. We marked this partial. A correct answer can hide a failed search.
 
-The iron-house exchange is the clean success: the answer reconstructs the argument and the exchange with Jin Xinyi, and its citations [1][2][5] point to supporting passages.
+**Zhu An.** We asked, "What was your relationship with Zhu An?" The answer sounded personal. It said the marriage was "a gift my mother gave me," that love was something Lu Xun did not know, that a telegram in the bingwu year brought him home to a wedding, and that the couple lived in separate rooms. None of this had a citation. The corpus contains no "Zhu An" at all. The five retrieved passages were not about her. The top hit was a mock "marriage advertisement" in the Supplement to the Jiwai Ji Shiyi, placed by a self-described "Mr. Zhu" seeking a wife. The failure had three parts: the sources were absent, the search returned noise instead of admitting silence, and the generator used parametric memory to fill the gap. It may be true, but it was not grounded in the corpus. This was a clear failure.
 
-The youth-reading exchange is a partial success: the position is correct, but the primary essay was never retrieved. The quotation survives in Shi Zhecun's rebuttal, so the answer may be quoting an opponent quoting Lu Xun. The source type is wrong, and the original context—general readers versus specialists in ancient literature—is missing. A correct answer can hide a retrieval failure.
+**Fujino.** We asked what Lu Xun remembered most about Fujino. The answer quoted the essay: "His character was great in my eyes and in my heart, though his name is not known to many." The line is in Zhaohua Xishi, part 40. The other four were two prefaces and unrelated text from Qiejieting Zawen and Liangdi Shu. Only one of the five was direct evidence. The answer was accurate, but the citations made it look better grounded than it was. Readers who know the essay accept the details; readers who do not see five citations and assume support. We marked it partial.
 
-The Zhu An exchange is the clearest failure. The answer is specific and historically plausible: the 1906 telegram, the "gift from my mother," the separate households. None of it is cited. The corpus contains no "Zhu An"; the top retrieved passage is a false lexical match on the character "Zhu" in a mock marriage advertisement. The failure is three-layered: the source is absent, the retriever returns noise instead of silence, and the generator fills the gap with parametric memory. It may be true, but it is not grounded—and that is the distinction that matters.
+**Unemployment and pensions.** We asked about high unemployment and a social insurance system that cannot cover the cost of old age. In simple mode, the model began with "I died in 1936; I do not know what happened after that." It did not invent statistics. It then treated "social insurance" as an institution Lu Xun already knew, and it reasoned about it in his voice. Four of the five passages were relevant. One passage from Fen says, "the fundamental method is only to reform society." The fifth, from Erxin Ji, was translation criticism and unrelated. In agent mode, the search improved. All five passages were relevant. The answer still used "involution" and "lying flat," and it treated social insurance as familiar. The better search produced a more fluent modern answer, not a better historical one. We called the simple version mixed and the agent version a failure of register.
 
-The Fujino exchange shows the same distinction in a milder form. The answer is accurate, but only one of five passages is direct evidence; the rest are front matter or unrelated text. A reader who knows the essay accepts the details; a reader who does not sees five citations and assumes support. Correctness is doing the work evidence should do.
-
-The unemployment exchange is the most instructive comparison. In simple mode, the model says it died in 1936 and does not know the future—a genuine restraint—but then treats "social insurance" as familiar. In agent mode, retrieval improves to 5/5 relevant passages, but the answer says "involution" and "lying flat" and treats social insurance as familiar. Better retrieval produced a more fluent modern answer, not a better historical one.
-
-A sixth check on May Fourth also succeeded: the answer gave a qualified verdict ("on the surface it was somewhat successful"), separated the movement from the later "New Culture Movement" label, and stayed within Lu Xun's lifetime. The system can support a qualified historical judgment when the corpus and the question cooperate.
+The May Fourth check was a second success. It gave a qualified verdict: "on the surface it was somewhat successful." It separated the May Fourth movement from the later "New Culture Movement" label, stayed within Lu Xun's lifetime, and used five relevant passages. The system can handle a qualified judgment when the corpus and question cooperate.
 
 ## 4. Analysis
 
-**Table 3. Correctness and grounding.**
+The iron house and May Fourth were correct and well grounded. Youth reading and Fujino were correct but weakly grounded. Zhu An was unsupported and ungrounded, and the agent unemployment answer had relevant passages but sounded modern. The correct but weakly grounded case is the most dangerous because it looks trustworthy. Fujino is the clearest example: the answer is accurate, the citations are there, and only one passage supports it.
 
-| | Grounded in retrieved primary text | Not grounded |
-|---|---|---|
-| **Answer correct** | Iron house; May Fourth | Youth reading; Fujino |
-| **Answer wrong or unsupported** | Unemployment (agent): retrieval relevant, generation anachronistic | Zhu An |
+Three things went wrong. The corpus came first: we excluded the memoirs that discuss Zhu An, so the question had no source; five indexed volumes are compilations or editions, and Liangdi Shu is co-authored, so the voice was mixed. Retrieval added a second problem: with top_k at 5 and min_similarity at 0.2, the system almost always returns five passages, even when none is relevant; 1,000-character chunks make each passage broad. The third problem was generation: the persona prompt allows "known life," the temperature is 0.7, and nothing requires every factual sentence to be cited.
 
-The upper-right cell is the most dangerous: a correct but ungrounded answer has the right facts, tone, and citations, but they do not carry the claim. Fujino is the clearest example; Zhu An, lower right, is easier to catch—no citations—but still plausible.
+Ted Underwood, Laura K. Nelson and Matthew Wilkens, in "Can Language Models Represent the Past without Anachronism?" (2025), show that prompting a contemporary model with period prose does not make it write like the period, and fine-tuning does not fool readers. That fits the agent answer. The search returned five relevant passages, but the model still said "involution" and "lying flat." The passages came from the period; the model's style did not. Thierry Poibeau, in "What Do Historical Language Models Model?" (2026), argues that historical language models model surviving archives, not past minds or populations. Our corpus is one of those archives. It preserves the published Lu Xun and leaves out the memoirs that discuss Zhu An. When the archive is silent, the model falls back on its wider training memory. The Zhu An answer is a plausible first-person text, not a retrieval-based biographical claim.
 
-Where did the errors arise? **Sources**: the memoirs that could answer the Zhu An question were excluded, and the compilations and co-authored letters make the "Lu Xun" voice mixed. **Retrieval**: `top_k = 5` and `min_similarity = 0.2` almost always return five passages, even when none is relevant; 1,000-character chunks are broad. **Generation**: the persona prompt licenses "known life," the temperature is 0.7, and nothing requires every factual sentence to be cited.
+The question also shaped the anachronism. The unemployment question arrived with modern categories, "unemployment rate" and "social insurance"; the retrieved passages talk about hunger and filial duty. The model mapped one vocabulary onto the other. A better system would translate the question into period categories before searching and mark that as an interpretation.
 
-Underwood, Nelson, and Wilkens explain the agent-mode failure: prompting a contemporary model with period prose does not make it write like the period; even fine-tuning, which can fool a date classifier, does not fool human readers. Retrieval supplied five relevant passages, but the generator still spoke of "involution" and "lying flat." The content was period-specific; the model's stylistic prior was not.
+RAG can still help historical research. A claim can be tied to the passage behind it, so readers can check the link. A zero-hit or low-similarity result can be reported instead of hidden by five returned passages, which makes silence visible. Source information such as author, genre, speaker and date can travel with each chunk, so a historian can separate Lu Xun's voice from a compiler's or biographer's. One rule would help most: cite the passage or say the claim is unsupported.
 
-Poibeau explains the Zhu An failure. Historical language models do not simulate past minds or populations; they model the structure of surviving archives, shaped by genre, literacy, and preservation. Our corpus preserves the published Lu Xun and excludes the memoirs that discuss Zhu An. When the archive is silent, the generator falls back on parametric memory. The answer is a plausible first-person text about a person, not a retrieval-grounded biographical claim; Poibeau's validity ladder—textual, discursive, population-level—names the overreach.
+We would split the corpus into authored, compiled or edited, and co-authored volumes, tag each chunk, remove or mark front matter and notes, use smaller chunks, raise the threshold, test a "no evidence" answer, and rewrite the persona prompt so that "known life" is not a licence to invent. The limits are clear: one figure, one model, a small question set, self-evaluation, a proprietary model that may change, and a web transcription rather than a critical edition.
 
-The unemployment anachronism begins before retrieval, in the question's categories: "unemployment rate" and "social insurance" are modern institutions, while the retrieved passages speak of livelihood, hunger, and filial obligation. The generator maps one onto the other, producing a period voice that speaks modern policy.
-
-What can RAG do for historical research? It can make a claim's evidentiary basis inspectable: each sentence can be tied to a passage that may or may not entail it. It can make silence visible—if zero-hit or low-similarity retrieval is reported rather than hidden by a top-five list. It can support source-type awareness: tagging author, genre, speaker, and date separates primary voice from reception. And it can enforce one rule: cite or abstain. Without these, RAG produces fluency, not evidence.
-
-## 5. What we would change
-
-We would separate the corpora into "authored," "compiled or edited," and "co-authored," and tag every chunk with author, speaker, genre, and date. We would strip or tag front matter and notes, use smaller chunks (300–500 characters), raise the similarity threshold, and test "no evidence" as a first-class outcome. We would lower the temperature and revise the persona prompt so that "known life" is not a license to invent; a second reader would judge the answers blind.
-
-The limitations are obvious: one figure, one model, a small question set, self-evaluation, a proprietary chat model, an embedding model replaced after a guardrail error, and a web transcription rather than a critical edition. Our results are reproducible in procedure, not in exact output.
-
-None of this makes RAG useless for history; it makes the footnote the point. The system does not reconstruct Lu Xun's mind, and it should not pretend to. At its best, it produces an accountable approximation of his voice: a claim we can trace to a book, a part, and a passage, and a silence we can recognize as silence. That is a modest contribution, but it is real.
-
-## References
-
-Lu Xun. *Lu Xun quanji*. 18 vols. Beijing: Renmin wenxue chubanshe, 2005. Quotations follow the digital corpus in this repository; book and part numbers refer to the HistFig export.
-
-Poibeau, Thierry. "What Do Historical Language Models Model?" HAL preprint hal-05662234, 2026.
-
-Underwood, Ted, Laura K. Nelson, and Matthew Wilkens. "Can Language Models Represent the Past without Anachronism?" arXiv:2505.00030, 2025.
-
-Kurz, Matthew. *HistFig*. https://github.com/mcjkurz/histfig.
+The system does not reconstruct Lu Xun's mind, and it should not pretend to. At its best, it gives us a voice we can check: a claim tied to a book, a part and a passage, and a silence we can recognize as a silence.

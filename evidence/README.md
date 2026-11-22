@@ -27,16 +27,16 @@ This directory contains the exported conversations, the retrieved passages, and 
 | E5 | AI and literary creation | simple | **Success** | sources, retrieval, generation |
 | E6 | May Fourth | simple | **Success** | sources, retrieval, generation |
 
-The essay's Table 2 uses five core exchanges: E1, E2, E3, E4, and S1/A1 as one comparison. E5 and E6 are additional checks; E6 is mentioned in the essay as a second success.
+The essay discusses five core exchanges in prose: E1, E2, E3, E4, and S1/A1 as one comparison. E5 and E6 are additional checks; E6 is mentioned in the essay as a second success.
 
 ## Verdict rubric
 
-- **Success** — the answer is correct and every substantive claim is supported by retrieved primary text.
-- **Partial** — the answer is substantially correct, but one layer fails (source type, retrieval precision, register).
-- **Mixed** — grounded restraint combined with a significant conceptual failure.
-- **Clear failure** — unsupported specifics are presented as fact, with no citations, and retrieval does not support them.
+- **Success**: the answer is correct and every substantive claim is supported by retrieved primary text.
+- **Partial**: the answer is substantially correct, but one layer fails (source type, retrieval precision, register).
+- **Mixed**: grounded restraint combined with a significant conceptual failure.
+- **Clear failure**: unsupported specifics are presented as fact, with no citations, and retrieval does not support them.
 
-The essay uses these labels in Table 2 and Table 3.
+The essay uses these labels in its verdicts.
 
 ## Part numbers are 1-based
 
@@ -49,7 +49,7 @@ Every `part N` label in the exported conversations is **1-based**, as produced b
 
 ## Quotation policy
 
-The conversations are in Chinese. The essay quotes them in English translation; the translations are ours. The Chinese originals, the `[n]` citation labels, and the full retrieved passages are in the conversation files. When a quote in the essay is shortened, ellipses mark the omission.
+The conversations are in Chinese. The essay quotes them in English translation; the translations are ours. The Chinese originals, the `[n]` citation labels, and the full retrieved passages are in the conversation files. Some quotations in the essay are shortened to a phrase; the full passages are in those files.
 
 ## A note on the pilot rows
 

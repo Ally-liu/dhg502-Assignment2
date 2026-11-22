@@ -1,4 +1,4 @@
-# Paper
+﻿# Paper
 
 **Title:** Correct but Ungrounded: Reflections on Chatting with Lu Xun through RAG
 **Group:** Zhang Min and Liu Chenyang
@@ -9,7 +9,7 @@
 
 | File | Purpose |
 |---|---|
-| `essay_en.docx` | **Submitted essay.** A4, Times New Roman 12 pt, 1.5 line spacing, six pages. Word count: approximately 1,970 (including headings and references). |
+| `essay_en.docx` | **Submitted essay.** A4, Times New Roman 12 pt, 1.5 line spacing, five pages. Word count: approximately 1,980 (including headings). |
 | `essay_en.md` | Markdown source. Use this for editing; regenerate the `.docx` afterwards. |
 | `essay_en.pdf` | Rendered copy for reading without Word. |
 
@@ -19,10 +19,12 @@ The submitted version is the `.docx`. The `.pdf` is a convenience copy; if the t
 
 The essay follows the four headings in the assignment:
 
-1. **Figure and corpus** — why Lu Xun; 54 volumes in Part 1, 32 in the index, 22 memoirs excluded; what is missing (the memoirs that discuss Zhu An); how clean the text is (web transcriptions, front matter, editorial notes, lacunae, five compilations and one co-authored letter collection).
-2. **Method** — five core questions, a sixth May Fourth check, the simple/agent comparison, the settings table, and the one substantive change (local `BAAI/bge-m3` after the OpenRouter HTTP 404).
-3. **Evidence** — five exchanges in Table 2, each with quoted question/answer, quoted retrieved passages, and a verdict. The iron-house exchange is the **success**; the Zhu An exchange is the **clear failure**. May Fourth is a second success in the text.
-4. **Analysis** — the correctness/grounding table; the source, retrieval, and generation layers; the persona prompt's "known life" loophole; `top_k`/`min_similarity`/chunking; Underwood, Nelson, and Wilkens on stylistic anachronism; Poibeau on surviving archives and the validity ladder; what RAG can do for historical research.
+1. **Figure and corpus**: why Lu Xun; 54 volumes in Part 1, 32 in the index, 22 memoirs excluded; what is missing (the memoirs that discuss Zhu An); how clean the text is (web transcriptions, front matter, editorial notes, lacunae, five compilations and one co-authored letter collection).
+2. **Method**: five core questions, a sixth May Fourth check, the simple/agent comparison, the settings table, and the one substantive change (local `BAAI/bge-m3` after the OpenRouter HTTP 404).
+3. **Evidence**: five exchanges in prose, each with quoted question/answer, quoted retrieved passages, and a verdict. The iron-house exchange is the **success**; the Zhu An exchange is the **clear failure**. May Fourth is a second success in the text.
+4. **Analysis**: the correctness/grounding discussion in prose; the source, retrieval, and generation layers; the persona prompt's "known life" loophole; `top_k`/`min_similarity`/chunking; Underwood, Nelson, and Wilkens on stylistic anachronism; Poibeau on surviving archives; what RAG can do for historical research; what we would change; limitations.
+
+The essay has no separate reference list. The assignment asks for engagement with Underwood et al. or Poibeau, not a bibliography, so both works are identified by author, title and year in Section 4.
 
 ## Quotation policy
 
@@ -36,6 +38,6 @@ The `.docx` is generated from `essay_en.md` by a small script that uses only the
 py -X utf8 code/make_docx.py
 ```
 
-The script reads `paper/essay_en.md` and writes `paper/essay_en.docx`. It uses A4, 1-inch margins, Times New Roman 12 pt for Latin text, SimSun for Chinese characters, 1.5 line spacing, and bordered tables. If you edit the Markdown, rerun the script and check the Word count before submitting.
+The script reads `paper/essay_en.md` and writes `paper/essay_en.docx`. It uses A4, 1-inch margins, Times New Roman 12 pt for Latin text, SimSun for Chinese characters, 1.5 line spacing, and a bordered settings table. If you edit the Markdown, rerun the script and check the Word count before submitting.
 
 The Chinese draft was a working document. It is not included here; the English essay is the submitted version.

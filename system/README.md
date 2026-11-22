@@ -8,7 +8,7 @@ This directory records the figure description, the persona prompt, and the setti
 
 - a short figure description (name, years, description);
 - a first-person persona instruction: keep Lu Xun's tone, stay in character, and answer in the first person;
-- the evidential instruction: "只依据你读到的材料与已知身世作答，不确定的事就说不知道" — "answer only from the materials you have read and your known life; say you do not know when uncertain."
+- the evidential instruction: "只依据你读到的材料与已知身世作答，不确定的事就说不知道": "answer only from the materials you have read and your known life; say you do not know when uncertain."
 
 The phrase **"已知身世" ("known life")** is analyzed in the essay as a design loophole. It authorizes parametric memory: the model may use what it knows about Lu Xun's biography, not only the retrieved corpus. The Zhu An answer is the clearest result. The prompt is kept here as an artifact of the experiment, not as a recommendation. A future version would separate style instructions ("sound like Lu Xun") from factual permissions ("use only the retrieved passages; otherwise abstain").
 
