@@ -7,7 +7,7 @@
 
 ## 1. Figure and corpus
 
-RAG promises to make a model *read* a historical figure rather than *remember* him. We tested that promise with Lu Xun (1881–1936), whose complete works are large, public-domain, and familiar enough to judge; his first-person voice also makes ventriloquism easy to detect.
+Retrieval-augmented generation (RAG) promises to make a model *read* a historical figure rather than *remember* him. We tested that promise with Lu Xun (1881–1936), whose complete works are large, public-domain, and familiar enough to judge; his first-person voice also makes ventriloquism easy to detect.
 
 Our Part 1 corpus has 54 volumes (about 4.4 million characters); the index used the 32 in `LuXun_works` (about 2.63 million): three novels, two prose/memoir collections, seventeen essay collections, two scholarly works, two preface collections, five compilations or editions, and the co-authored *Liangdi Shu*. The 22 memoirs in `Writings_about_LuXun`—by Xu Shoushang, Xu Guangping, Zhou Zuoren, Xiao Hong, and others—were excluded so that the model's "I" would be Lu Xun's, not a biographer's.
 
