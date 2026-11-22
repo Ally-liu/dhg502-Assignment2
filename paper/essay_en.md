@@ -91,9 +91,9 @@ The question also shaped the anachronism. The unemployment question arrived with
 
 RAG can still help historical research. A claim can be tied to the passage behind it, so readers can check the link. A zero-hit or low-similarity result can be reported instead of hidden by five returned passages, which makes silence visible. Source information such as author, genre, speaker and date can travel with each chunk, so a historian can separate Lu Xun's voice from a compiler's or biographer's. One rule would help most: cite the passage or say the claim is unsupported.
 
-We would split the corpus into authored, compiled or edited, and co-authored volumes, tag each chunk, remove or mark front matter and notes, use smaller chunks, raise the threshold, test a "no evidence" answer, and rewrite the persona prompt so that "known life" is not a licence to invent. The limits are clear: one figure, one model, a small question set, self-evaluation, a proprietary model that may change, and a web transcription rather than a critical edition.
+We would split the corpus into authored, compiled or edited, and co-authored volumes, tag each chunk, remove or mark front matter and notes, use smaller chunks, raise the threshold, test a "no evidence" answer, and rewrite the persona prompt so that "known life" is not a licence to invent. These limits matter. We studied one person, one chat model and a handful of questions, and we judged our own answers. The chat model is proprietary and may change. The corpus is a web transcription, not a critical edition. The findings describe this setup; they are not a general claim about RAG.
 
-The system does not reconstruct Lu Xun's mind, and it should not pretend to. At its best, it gives us a voice we can check: a claim tied to a book, a part and a passage, and a silence we can recognize as a silence.
+At best, the system gives us sentences we can check. A claim should lead back to a book, a part and a passage. When the corpus has nothing, the answer should say so instead of filling the gap.
 
 ## References
 
