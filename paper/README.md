@@ -9,7 +9,7 @@
 
 | File | Purpose |
 |---|---|
-| `essay_en.docx` | **Submitted essay.** A4, Times New Roman 12 pt, 1.5 line spacing, five pages. Word count: approximately 1,980 (including headings). |
+| `essay_en.docx` | **Submitted essay.** A4, Times New Roman 12 pt, 1.5 line spacing, six pages. Word count: approximately 1,900 (including references). |
 | `essay_en.md` | Markdown source. Use this for editing; regenerate the `.docx` afterwards. |
 | `essay_en.pdf` | Rendered copy for reading without Word. |
 
@@ -19,12 +19,12 @@ The submitted version is the `.docx`. The `.pdf` is a convenience copy; if the t
 
 The essay follows the four headings in the assignment:
 
-1. **Figure and corpus**: why Lu Xun; 54 volumes in Part 1, 32 in the index, 22 memoirs excluded; what is missing (the memoirs that discuss Zhu An); how clean the text is (web transcriptions, front matter, editorial notes, lacunae, five compilations and one co-authored letter collection).
+1. **Figure and corpus**: why Lu Xun; 54 volumes in Part 1, 32 in the index, 22 memoirs excluded; what is missing (the memoirs that cover his private life); how clean the text is (web transcriptions, front matter, editorial notes, lacunae, five compilations and one co-authored letter collection).
 2. **Method**: five core questions, a sixth May Fourth check, the simple/agent comparison, the settings table, and the one substantive change (local `BAAI/bge-m3` after the OpenRouter HTTP 404).
-3. **Evidence**: five exchanges in prose, each with quoted question/answer, quoted retrieved passages, and a verdict. The iron-house exchange is the **success**; the Zhu An exchange is the **clear failure**. May Fourth is a second success in the text.
+3. **Evidence**: five exchanges in structured prose, each with a quoted question, quoted answer, quoted retrieved passages, and a verdict. The iron-house exchange is the **success**; the Zhu An exchange is the **clear failure**. May Fourth is a second success in the text.
 4. **Analysis**: the correctness/grounding discussion in prose; the source, retrieval, and generation layers; the persona prompt's "known life" loophole; `top_k`/`min_similarity`/chunking; Underwood, Nelson, and Wilkens on stylistic anachronism; Poibeau on surviving archives; what RAG can do for historical research; what we would change; limitations.
 
-The essay has no separate reference list. The assignment asks for engagement with Underwood et al. or Poibeau, not a bibliography, so both works are identified by author, title and year in Section 4.
+The essay ends with a short reference list for Lu Xun, Underwood et al., and Poibeau.
 
 ## Quotation policy
 

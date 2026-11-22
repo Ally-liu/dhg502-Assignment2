@@ -6,7 +6,7 @@
 
 This repository contains the complete Assignment 2 submission: the Part 1 corpus, the Part 2 English reflection essay, the exported conversations and error log, and the system files needed to reproduce the experiment. The experiment uses [HistFig](https://github.com/mcjkurz/histfig) with the texts of **Lu Xun (鲁迅, 1881–1936)**.
 
-The essay is the submitted text: **`paper/essay_en.docx`** (approximately 1,980 words, five pages). A Markdown source and a rendered PDF are included for convenience.
+The essay is the submitted text: **`paper/essay_en.docx`** (approximately 1,900 words, six pages). A Markdown source and a rendered PDF are included for convenience.
 
 ---
 
@@ -15,10 +15,10 @@ The essay is the submitted text: **`paper/essay_en.docx`** (approximately 1,980 
 | Requirement | Where it is | Status |
 |---|---|---|
 | **Part 1:** `.txt` files, UTF-8, at least 1 million characters, with a source list | `corpus/`: 54 volumes, about 4.33 million characters; `corpus/manifest.csv`; `corpus/README.md` | Complete |
-| **Part 2:** one group essay, **English, 1,500-2,000 words** | `paper/essay_en.docx`: approximately 1,980 words (Word count) | Complete |
+| **Part 2:** one group essay, **English, 1,500-2,000 words** | `paper/essay_en.docx`: approximately 1,900 words (Word count) | Complete |
 | **1 · Figure and corpus:** what is in the files, what is missing, how clean the text is | Essay §1; `corpus/README.md`; `corpus/manifest.csv` | Complete |
 | **2 · Method:** which questions were asked, which settings were changed | Essay §2; `system/README.md`; `system/config.example.toml` | Complete |
-| **3 · Evidence:** at least five exchanges, each quoted with the passages behind it and a verdict; one success and one clear failure | Essay §3, five exchanges in prose; `evidence/`: eight exchanges, including the iron-house success and the Zhu An clear failure | Complete |
+| **3 · Evidence:** at least five exchanges, each quoted with the passages behind it and a verdict; one success and one clear failure | Essay §3, five exchanges in structured prose; `evidence/`: eight exchanges, including the iron-house success and the Zhu An clear failure | Complete |
 | **4 · Analysis:** where errors arose (sources, retrieval, generation); what RAG can do for historical research; engage Underwood et al. or Poibeau | Essay §4 | Complete |
 | **Exported conversations (.md)** | `evidence/conversation_*.md`: four files, eight exchanges | Complete |
 | **Error log (.csv or .xlsx)** | `evidence/error_log.csv`: eight rows with verdict and error layer | Complete |

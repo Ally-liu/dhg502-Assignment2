@@ -44,7 +44,7 @@ The English essay is a translation/rewrite of the authors' Chinese draft, not an
 ## Representative prompts
 
 - "Rewrite this Chinese draft as a 1,800–2,000-word English group reflection with the four required sections. Keep every empirical claim traceable to `evidence/`; do not invent quotations."
-- "Draft five exchanges in prose. For each, quote the question and a short answer, quote the retrieved passage with its book and part number, and give a verdict. Include one success and one clear failure."
+- "Draft five exchanges in structured prose. For each, quote the question and a short answer, quote the retrieved passage with its book and part number, and give a verdict. Include one success and one clear failure."
 - "Check every `part N` in the paper against the HistFig exports and list the mismatches. The exports are 1-based."
 - "Separate the source, retrieval, and generation layers for each case. Where the evidence is ambiguous, say so."
 - "Generate a clean A4 DOCX from the Markdown: Times New Roman 12 pt, 1.5 spacing, bordered tables."

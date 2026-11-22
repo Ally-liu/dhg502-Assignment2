@@ -27,7 +27,7 @@ This directory contains the exported conversations, the retrieved passages, and 
 | E5 | AI and literary creation | simple | **Success** | sources, retrieval, generation |
 | E6 | May Fourth | simple | **Success** | sources, retrieval, generation |
 
-The essay discusses five core exchanges in prose: E1, E2, E3, E4, and S1/A1 as one comparison. E5 and E6 are additional checks; E6 is mentioned in the essay as a second success.
+The essay discusses five core exchanges in structured prose: E1, E2, E3, E4, and S1/A1 as one comparison. E5 and E6 are additional checks; E6 is mentioned in the essay as a second success.
 
 ## Verdict rubric
 
